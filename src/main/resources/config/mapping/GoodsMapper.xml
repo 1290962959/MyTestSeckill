@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hb.MySeckill.dao.GoodsDao">
+
+
+    <select id="getAllGoods" resultType="Goods">
+        select GoodId,GoodName,GoodNum,GoodStatus,KillStartTime,KillEndTime,CreateTime from goods where GoodStatus = 0
+    </select>
+
+    <select id="getGoodsByid" parameterType="java.lang.Integer" resultType="Goods">
+        select GoodId,GoodName,GoodNum,GoodStatus,KillStartTime,KillEndTime,CreateTime from goods where GoodId = #{GoodId}
+    </select>
+
+    <update id="reduceGoodNumById" parameterType="java.lang.Integer">
+        update goods set GoodNum = GoodNum - 1 where GoodId = #{GoodId}
+    </update>
+</mapper>
